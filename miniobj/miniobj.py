@@ -1,3 +1,5 @@
+import numpy as np
+
 from miniobj.loader import readlines, parse_lines
 from miniobj.exporter import export_obj
 
@@ -135,3 +137,12 @@ class MiniObj:
 
     def export(self, file_path: str):
         export_obj(self, file_path)
+
+    def scale_unit(self):
+        min_v = np.min(self.v, axis=0)
+        max_v = np.max(self.v, axis=0)
+        scale = np.max(max_v - min_v)
+        self.v = (self.v - min_v) / scale
+
+    def quantize(self, bins=64):
+        self.v = (self.v * bins).astype(int)

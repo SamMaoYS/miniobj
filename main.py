@@ -37,4 +37,7 @@ if __name__ == "__main__":
         face_uvs = [obj_mesh.fvt[i] for i in faces]
         face_normals = [obj_mesh.fvn[i] for i in faces]
 
+    obj_mesh.scale_unit()
+    obj_mesh.quantize()
+
     obj_mesh.export(args.output)
