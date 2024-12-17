@@ -1,3 +1,3 @@
-from .loader import MiniObjLoader
+from .miniobj import MiniObj
 
-__all__ = ["MiniObjLoader"]
+__all__ = ["MiniObj"]
